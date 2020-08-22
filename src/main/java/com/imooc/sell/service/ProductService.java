@@ -1,6 +1,8 @@
 package com.imooc.sell.service;
 
 import com.imooc.sell.dataobject.ProductInfo;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -15,9 +17,10 @@ public interface ProductService {
 
     /**
      * 服务端查询所有商品列表
+     * 分页返回，使用 Pageable 作为参数，返回值需要指定为Page对象
      * @return
      */
-    List<ProductInfo> findAll();
+    Page<ProductInfo> findAll(Pageable pageable);
 
     /**
      * 保存商品、
