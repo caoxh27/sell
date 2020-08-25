@@ -36,7 +36,8 @@ class ProductCategoryRepositoryTest {
 //        System.out.println(productCategory2.toString());
 
     }
-
+    //新增记录，data jpa用的是 save方法； 新建一个对象，再save(), createTime,updateTime都会自动更新；
+    //对于查出来的对象，不显式指定，则用原来的值； 要是不想手写，则在类上使用动态更新的注解
     @Test
     public void saveTest1(){
         ProductCategory productCategory = new ProductCategory();
@@ -54,7 +55,7 @@ class ProductCategoryRepositoryTest {
         repository.save(productCategory);
     }
 
-    //更新记录，data jpa用的也是 save方法； 新建一个对象，在save(), updateTime会有数据看自动更新；
+    //更新记录，data jpa用的也是 save方法； 新建一个对象，再save(), updateTime会有数据看自动更新；
     //对于查出来的对象，不显式指定，则用原来的值； 要是不想手写，则在类上使用动态更新的注解
     @Test
     public void saveTest3(){
