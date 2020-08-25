@@ -7,3 +7,26 @@
 2.  C:\Windows\System32\drivers\etc\hosts
 http://sell.com/#/
 http://sell.com/#/order 设定 document.cookie='openid=abc123'
+
+nginx配置：
+vi /usr/local/nginx/conf/nginx.conf
+
+server {
+        listen       80;
+        server_name  sell.com;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   /opt/data/wwwroot/sell;
+            index  index.html index.htm;
+        }
+        location /sell/ {
+            proxy_pass http://192.168.0.31:8080/sell/;
+        }
+
+
+
+nginx -s reload
