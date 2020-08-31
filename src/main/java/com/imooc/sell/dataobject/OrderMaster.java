@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -69,4 +70,7 @@ public class OrderMaster {
     //为了 updateTime 自动更新，需要使用 @DynamicUpdate 注解
     private Date updateTime;
 
+    //关联用，一般不这么做；避免混乱，一般实体类就单纯映射表；而新建DTO给controller那边用
+    //@Transient
+    //private List<OrderDetail> orderDetailList;
 }
