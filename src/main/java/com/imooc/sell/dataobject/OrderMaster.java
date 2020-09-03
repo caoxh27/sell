@@ -70,7 +70,7 @@ public class OrderMaster {
     //为了 updateTime 自动更新，需要使用 @DynamicUpdate 注解
     private Date updateTime;
 
-    //关联用，一般不这么做；避免混乱，一般实体类就单纯映射表；而新建DTO给controller那边用
+    //关联用，一般不这么做；避免混乱，避免同时映射数据库字段，同时给controller用，一般实体类就单纯映射表；而新建DTO给controller那边用
     //@Transient
     //private List<OrderDetail> orderDetailList;
 }

@@ -20,7 +20,7 @@ public class OrderDetail {
     /** 商品名称. */
     private String productName;
 
-    /** 商品单价. */
+    /** 商品单价. -- 这个一定要从数据库里取得，而不能有前端传入*/
     private BigDecimal productPrice;
 
     /** 商品数量. */
