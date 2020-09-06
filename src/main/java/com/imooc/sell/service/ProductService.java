@@ -1,6 +1,7 @@
 package com.imooc.sell.service;
 
 import com.imooc.sell.dataobject.ProductInfo;
+import com.imooc.sell.dto.CartDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -32,7 +33,10 @@ public interface ProductService {
 
 
     //加库存
+    //加减库存，不用返回数据，如果有错误，直接抛异常就好了
+    void increaseStock(List<CartDTO> cartDTOList);
 
     //减库存
+    void dereaseStock(List<CartDTO> cartDTOList);
 
 }

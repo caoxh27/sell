@@ -1,16 +1,16 @@
 package com.imooc.sell.dto;
 
 import com.imooc.sell.dataobject.OrderDetail;
-import com.imooc.sell.enums.OrderStatusEnum;
-import com.imooc.sell.enums.PayStatusEnum;
 import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+//为了避免混乱，避免同时映射数据库字段，同时给controller用，一般实体类就单纯映射表；而新建DTO给controller那边用
 @Data
+@DynamicUpdate
 public class OrderDTO {
     /** 订单id. */
     private String orderId;
@@ -37,10 +37,10 @@ public class OrderDTO {
     private Integer payStatus;
 
     /** 创建时间. */
-    private Date createTime;
+    private Date createTime = new Date();
 
     /** 更新时间. */
-    private Date updateTime;
+    private Date updateTime = new Date();
 
     private List<OrderDetail> orderDetailList;
 }

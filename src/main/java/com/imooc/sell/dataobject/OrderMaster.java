@@ -32,7 +32,7 @@ import java.util.Date;
 
 @DynamicUpdate
 
-// @DynamicUpdate@DynamicInsert 是hibernate里面的注解，这两个注解加上之后就不会为字段值不变的字段生成sql语句，这样sql的长度就减少了提高了传输效率和执行效率，
+// @DynamicUpdate @DynamicInsert 是hibernate里面的注解，这两个注解加上之后就不会为字段值不变的字段生成sql语句，这样sql的长度就减少了提高了传输效率和执行效率，
 // 在做修改的时候，千万不要以为这两个注解不会为字段值为null的字段生成sql，如果前端传进来一个实体对象，部分字段没有传，这时候如果使用xxxRepository.save(entity) 方法，他会把null的字段设置为空，而不是不生成sql，
 // 如果你想要字段值为null的时候不生成sql，又不想再查一遍对象可以使用 CriteriaUpdate 对象更新你需要的字段
 
@@ -64,11 +64,11 @@ public class OrderMaster {
     private Integer payStatus = PayStatusEnum.WAIT.getCode();
 
     /** 创建时间. */
-    private Date createTime;
+    private Date createTime = new Date();
 
     /** 更新时间. */
     //为了 updateTime 自动更新，需要使用 @DynamicUpdate 注解
-    private Date updateTime;
+    private Date updateTime = new Date();
 
     //关联用，一般不这么做；避免混乱，避免同时映射数据库字段，同时给controller用，一般实体类就单纯映射表；而新建DTO给controller那边用
     //@Transient
