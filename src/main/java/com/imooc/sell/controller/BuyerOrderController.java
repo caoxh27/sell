@@ -45,7 +45,7 @@ public class BuyerOrderController {
         }
 
         OrderDTO createResult = orderService.create(orderDTO);
-
+        //TODO 6--11 创建订单 postman测试 还没做
         Map<String, String> map = new HashMap<>();
         map.put("orderId", createResult.getOrderId());
 

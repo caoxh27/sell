@@ -91,8 +91,9 @@ public class OrderServiceImpl implements OrderService {
 
         //3. 写入订单数据库（orderMaster）  =====================================================================
         OrderMaster orderMaster = new OrderMaster();
+        orderDTO.setOrderId(orderId);
         BeanUtils.copyProperties(orderDTO,orderMaster);
-        orderMaster.setOrderId(orderId);
+        //orderMaster.setOrderId(orderId);      --orderId需要set到DTO在copy到Master,避免返回前端为空
         orderMaster.setOrderAmount(orderAmount);
         //新建出来的orderMaster,状态是有值的，但是属性拷贝的时候，orderDTO里面的状态为null,覆盖了，所以这里需要重新写会去
         orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());

@@ -27,6 +27,7 @@ public class OrderForm2OrderDTOConverter {
 
         List<OrderDetail> orderDetailList = new ArrayList<>();
         try {
+            //购物车，Json格式字符串，转为 对象列表
             orderDetailList = gson.fromJson(orderForm.getItems(),
                     new TypeToken<List<OrderDetail>>() {
                     }.getType());
