@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -24,7 +25,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductInfo findById(String productId) {
-        return repository.findById(productId).get();
+        ProductInfo productInfo = null;
+        Optional<ProductInfo> productOptional = repository.findById(productId);
+        if (productOptional.isPresent()) {
+            productInfo = productOptional.get();
+            System.out.println(productInfo.toString());
+        } else {
+            // handle not found, return null or throw
+            System.out.println("productInfo no exit!");
+        }
+        return productInfo;
     }
 
     @Override
