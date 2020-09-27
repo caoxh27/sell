@@ -7,12 +7,17 @@ import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 //为了避免混乱，避免同时映射数据库字段，同时给controller用，一般实体类就单纯映射表；而新建DTO给controller那边用
 @Data
 @DynamicUpdate
+
+//处理返回的 null 值，不做返回；全局配置的配置文件里面
+//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
     /** 订单id. */
     private String orderId;
@@ -46,5 +51,7 @@ public class OrderDTO {
     @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime = new Date();
 
-    private List<OrderDetail> orderDetailList;
+    //如果需求返回不能为null,可以返回一个初始值
+    //TODO v20200927
+    private List<OrderDetail> orderDetailList = new ArrayList<>();
 }

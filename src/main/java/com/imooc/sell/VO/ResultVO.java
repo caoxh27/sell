@@ -9,6 +9,7 @@ import lombok.Data;
  * 最后前后端根据API问题各自开发，然后联调
  */
 @Data
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResultVO<T> {
     /** 错误码. */
     private Integer code;
