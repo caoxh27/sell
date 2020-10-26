@@ -73,19 +73,31 @@ public class BuyerOrderController {
         //return ResultVOUtil.success();
     }
 
-//    //订单详情
-//    @GetMapping("/detail")
-//    public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
-//                                     @RequestParam("orderId") String orderId) {
-//        OrderDTO orderDTO = buyerService.findOrderOne(openid, orderId);
-//        return ResultVOUtil.success(orderDTO);
-//    }
-//
-//    //取消订单
-//    @PostMapping("/cancel")
-//    public ResultVO cancel(@RequestParam("openid") String openid,
-//                           @RequestParam("orderId") String orderId) {
-//        buyerService.cancelOrder(openid, orderId);
-//        return ResultVOUtil.success();
-//    }
+    //订单详情
+    @GetMapping("/detail")
+    public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
+                                     @RequestParam("orderId") String orderId) {
+
+        //TODO 不安全的临时做法，openid暂时没用起来
+        OrderDTO orderDTO = orderService.findOne(orderId);
+
+        //安全的做法
+        //OrderDTO orderDTO = buyerService.findOrderOne(openid, orderId);
+        return ResultVOUtil.success(orderDTO);
+    }
+
+    //取消订单
+    @PostMapping("/cancel")
+    public ResultVO cancel(@RequestParam("openid") String openid,
+                           @RequestParam("orderId") String orderId) {
+
+        //TODO 不安全的临时做法，openid暂时没用起来
+        OrderDTO orderDTO = orderService.findOne(orderId);
+
+        //安全的做法
+        //buyerService.cancelOrder(openid, orderId);
+
+        orderService.cancel(orderDTO);
+        return ResultVOUtil.success();
+    }
 }

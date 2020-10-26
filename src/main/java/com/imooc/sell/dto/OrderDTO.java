@@ -51,7 +51,8 @@ public class OrderDTO {
     @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime = new Date();
 
-    //如果需求返回不能为null,可以返回一个初始值
+    //如果需求返回不能为null,可以返回一个初始值 ArrayList
     //TODO v20200927
-    private List<OrderDetail> orderDetailList = new ArrayList<>();
+    //private List<OrderDetail> orderDetailList = new ArrayList<>();
+    private List<OrderDetail> orderDetailList;
 }
