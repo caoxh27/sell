@@ -78,8 +78,13 @@ public class BuyerOrderController {
     public ResultVO<OrderDTO> detail(@RequestParam("openid") String openid,
                                      @RequestParam("orderId") String orderId) {
 
-        //TODO 不安全的临时做法，openid暂时没用起来
+        //TODO 不安全的临时做法，openid暂时没用起来，用户可以用orderid查询其他人的订单
         OrderDTO orderDTO = orderService.findOne(orderId);
+
+        //不过很多订单服务都要做如此的判断，可以单独提取出一个BuyerService来
+        //if(!orderDTO.getBuyerOpenid().equalsIgnoreCase(openid)){
+                //如果订单的openid和传入的openid不等，那么判断不是本人……
+        //}
 
         //安全的做法
         //OrderDTO orderDTO = buyerService.findOrderOne(openid, orderId);
@@ -91,7 +96,7 @@ public class BuyerOrderController {
     public ResultVO cancel(@RequestParam("openid") String openid,
                            @RequestParam("orderId") String orderId) {
 
-        //TODO 不安全的临时做法，openid暂时没用起来
+        //TODO 不安全的临时做法，openid暂时没用起来，用户可以用orderid查询其他人的订单
         OrderDTO orderDTO = orderService.findOne(orderId);
 
         //安全的做法
